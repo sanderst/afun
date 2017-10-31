@@ -11,6 +11,16 @@
 [test]
 eagle
 
+[api]
+den2api[01:16]
+den2api22
+den2api26
+den2api[32:33]
+den2api35
+
+[newdbs]
+den2cvdbsm[01:99]
+
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
 ## green.example.com
