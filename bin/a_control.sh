@@ -10,3 +10,8 @@ yum install ansible -y
 
 # Validate version
 ansible --version
+
+# Copy and configure SSH key
+mkdir /home/caretaker/.ssh
+cp /home/caretaker/afun/conf/.ssh/ansible_rsa* /home/caretaker/.ssh/
+chmod 700 /home/caretaker/.ssh/ansible_rsa
