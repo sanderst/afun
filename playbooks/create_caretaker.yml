@@ -1,5 +1,6 @@
 ---
-- hosts: test
+- hosts: newdbs
+  gather_facts: False
   tasks:
     - name: Create a group
       group: name=svc_accounts state=present system=yes gid=1337
