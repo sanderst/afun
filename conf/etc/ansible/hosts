@@ -9,7 +9,7 @@
 #   - A hostname/ip can be a member of multiple groups
 
 [test]
-eagle
+node01
 
 [api]
 den2api[01:16]
