@@ -1,0 +1,19 @@
+---
+- hosts: test
+  tasks:
+    - name: Create a group
+      group: name=svc_accounts state=absent system=yes gid=1337
+
+    - name: Create service user
+      user: name=caretaker state=absent uid=1337 group=svc_accounts
+
+    - name: Create .ssh directory
+      file: path=/home/caretaker/.ssh state=absent mode=0755
+
+    - name: Copy file
+      copy: 
+        src: /home/caretaker/afun/conf/.ssh/ansible_rsa.pub 
+        dest: /home/caretaker/.ssh/authorized_keys
+        owner: caretaker
+        group: svc_accounts
+        mode: 0600
