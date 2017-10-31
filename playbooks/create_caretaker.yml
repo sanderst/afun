@@ -2,13 +2,13 @@
 - hosts: test
   tasks:
     - name: Create a group
-      group: name=svc_accounts state=absent system=yes gid=1337
+      group: name=svc_accounts state=present system=yes gid=1337
 
     - name: Create service user
-      user: name=caretaker state=absent uid=1337 group=svc_accounts
+      user: name=caretaker state=present uid=1337 group=svc_accounts
 
     - name: Create .ssh directory
-      file: path=/home/caretaker/.ssh state=absent mode=0755
+      file: path=/home/caretaker/.ssh state=directory mode=0755
 
     - name: Copy file
       copy: 
@@ -17,3 +17,11 @@
         owner: caretaker
         group: svc_accounts
         mode: 0600
+
+    - name: Copy sudoers
+      copy: 
+        src: /home/caretaker/afun/conf/files/caretaker
+        dest: /etc/sudoers.d/caretaker
+        owner: root
+        group: root
+        mode: 0440
